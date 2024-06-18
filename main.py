@@ -8,6 +8,7 @@ from datetime import date
 today = str(date.today())
 
 #sets up the players
+os.system('clear')
 print("Axe Throwing: \n")
 playerOne = input("Player One:  ") 
 os.system('clear')
@@ -132,8 +133,32 @@ p2Sum = (p2t1 + p2t2 + p2t3 + p2t4 + p2t5 + p2t6 + p2t7 + p2t8 + p2t9 + p2t10)
 f = open("Score.txt", "a")
 f.write("\n")
 f.write(today + "\n")
+
+if p1Sum > p2Sum:
+    f.write(playerOne + " is the WINNER!\n")
+if p2Sum > p1Sum:
+    f.write(playerTwo + " is the WINNER!\n")
+
+if p1Sum == p2Sum:
+    print("Sudden Death!!!")
+    time.sleep(3)
+    os.system('clear')
+    suddenDeath = int(input("Who was closest to the kill-shot (" + "1-" + playerOne + " / " + "2-" + playerTwo + ") 1 or 2" + ": "))
+    os.system('clear')
+    if suddenDeath == 1:
+        f = open("Score.txt", "a")
+        f.write(playerOne + " is the WINNER!\n")
+        f.close()
+    if suddenDeath == 2:
+        f = open("Score.txt", "a")
+        f.write(playerTwo + " is the WINNER!\n")
+        f.close()
+
+f = open("Score.txt", "a")
+f.write("\n")
 f.write(playerOne + ":  " + str(p1t1) + " " + str(p1t2) + " " + str(p1t3) + " " + str(p1t4) + " " + str(p1t5) + " " + str(p1t6) + " " + str(p1t7) + " " + str(p1t8) + " " + str(p1t9) + " " + str(p1t10) + " = " + str(p1Sum) + "\n")
 f.write(playerTwo + ":  " + str(p2t1) + " " + str(p2t2) + " " + str(p2t3) + " " + str(p2t4) + " " + str(p2t5) + " " + str(p2t6) + " " + str(p2t7) + " " + str(p2t8) + " " + str(p2t9) + " " + str(p2t10) + " = " + str(p2Sum))
+f.write("\n")
 f.write("\n")
 f.close()
 
